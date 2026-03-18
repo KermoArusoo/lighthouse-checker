@@ -13,6 +13,16 @@
 			content="#ffffff" />
 		<title>Lighthouse Checker</title>
 		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+			rel="stylesheet" />
+		<link
 			rel="stylesheet"
 			href="style.css" />
 	</head>
@@ -25,15 +35,17 @@
 			<form
 				id="form"
 				class="form">
+				<label for="api-input">API Key</label>
 				<input
 					type="password"
 					id="api-input"
-					placeholder="Enter API Key"
+					placeholder="sk-xxxxxxxxxxxxxxxx"
 					required />
+				<label for="url-input">Website URL</label>
 				<input
 					type="text"
 					id="url-input"
-					placeholder="Enter your website URL"
+					placeholder="https://example.com"
 					required />
 				<input
 					type="radio"
