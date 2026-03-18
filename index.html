@@ -17,8 +17,80 @@
 			href="style.css" />
 	</head>
 	<body>
-		<header class="header"></header>
-		<main class="container"></main>
+		<header class="header">
+			<h1>Lighthouse Checker</h1>
+			<p>Analyze your website's performance with Lighthouse</p>
+		</header>
+		<main class="container">
+			<form
+				id="form"
+				class="form">
+				<input
+					type="password"
+					id="api-input"
+					placeholder="Enter API Key"
+					required />
+				<input
+					type="text"
+					id="url-input"
+					placeholder="Enter your website URL"
+					required />
+				<input
+					type="radio"
+					id="desktop"
+					name="device"
+					value="desktop"
+					checked />
+				<label for="desktop">Desktop</label>
+				<input
+					type="radio"
+					id="mobile"
+					name="device"
+					value="mobile" />
+				<label for="mobile">Mobile</label>
+				<button type="submit">Check Performance</button>
+			</form>
+			<div
+				id="loading"
+				class="loading hidden">
+				<div class="spinner"></div>
+				<p>Analyzing... this may take 10-30 seconds</p>
+			</div>
+			<div
+				id="errors"
+				class="errors hidden"></div>
+			<div
+				id="results"
+				class="results hidden">
+				<div class="score-card">
+					<p
+						id="score-performance"
+						class="score-value"></p>
+					<p class="score-label">Performance</p>
+				</div>
+
+				<div class="score-card">
+					<p
+						id="score-accessibility"
+						class="score-value"></p>
+					<p class="score-label">Accessibility</p>
+				</div>
+
+				<div class="score-card">
+					<p
+						id="score-best-practices"
+						class="score-value"></p>
+					<p class="score-label">Best Practices</p>
+				</div>
+
+				<div class="score-card">
+					<p
+						id="score-seo"
+						class="score-value"></p>
+					<p class="score-label">SEO</p>
+				</div>
+			</div>
+		</main>
 		<script src="script.js"></script>
 	</body>
 </html>
