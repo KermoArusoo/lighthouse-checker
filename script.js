@@ -13,11 +13,16 @@ const accessibilityScore = document.getElementById("score-accessibility");
 const bestPracticesScore = document.getElementById("score-best-practices");
 const seoScore = document.getElementById("score-seo");
 
+apiInput.value = sessionStorage.getItem("apiKey") || "";
+
 form.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	const apiKey = apiInput.value;
 	const url = urlInput.value;
 	const strategy = strategyDesktop.checked ? "desktop" : "mobile";
+
+	sessionStorage.setItem("apiKey", apiKey);
+
 	await analyzeUrl(apiKey, url, strategy);
 });
 
@@ -29,6 +34,15 @@ async function analyzeUrl(apiKey, url, strategy) {
 		resultsDiv.classList.add("hidden");
 
 		url = url.trim();
+		apiKey = apiKey.trim();
+
+		if (!apiKey && !url) {
+			throw new Error("Please enter both an API key and a URL.");
+		} else if (!apiKey) {
+			throw new Error("Please enter your API key.");
+		} else if (!url) {
+			throw new Error("Please enter a URL to analyze.");
+		}
 
 		if (!url.startsWith("http://") && !url.startsWith("https://")) {
 			url = "https://" + url;
@@ -81,7 +95,7 @@ function getScoreClass(score) {
 }
 
 function displayScore(element, score) {
-	element.textContent = score;
+	animateScore(element, score);
 	element.classList.remove("score-good", "score-average", "score-poor");
 	element.classList.add(getScoreClass(score));
 }
@@ -92,4 +106,18 @@ function showElement(element) {
 	void element.offsetWidth;
 	element.classList.remove("hidden");
 	element.classList.add("fade-in");
+}
+
+function animateScore(element, targetScore) {
+	let current = 0;
+	const duration = 800; // milliseconds
+	const stepTime = duration / targetScore;
+
+	const counter = setInterval(() => {
+		current++;
+		element.textContent = current;
+		if (current >= targetScore) {
+			clearInterval(counter);
+		}
+	}, stepTime);
 }

@@ -69,6 +69,24 @@ body {
 	cursor: default;
 }
 
+/* ── Form hint text ─────────────────────────── */
+
+.form-hint {
+	grid-column: 1 / -1;
+	font-size: 0.75rem;
+	color: #8b949e;
+	margin-top: -0.5rem;
+}
+
+.form-hint a {
+	color: #f78166;
+	text-decoration: none;
+}
+
+.form-hint a:hover {
+	text-decoration: underline;
+}
+
 /* ── Text / password inputs ─────────────────── */
 
 .form input[type="text"],
@@ -159,6 +177,13 @@ body {
 
 .form button[type="submit"]:active {
 	transform: scale(0.98);
+}
+
+.form button[type="submit"]:disabled {
+	background: #30363d;
+	color: #484f58;
+	cursor: not-allowed;
+	transform: none;
 }
 
 /* ── Loading ─────────────────────────────────── */
@@ -299,6 +324,20 @@ body {
 
 .score-poor {
 	color: #ff4e42;
+}
+
+/* ── Footer ─────────────────────────────────── */
+
+.footer {
+	text-align: center;
+	padding: 2rem 1rem;
+	font-size: 0.8rem;
+	color: #484f58;
+}
+
+.footer a {
+	color: #f78166;
+	text-decoration: none;
 }
 
 /* ── Tablet+ (≥ 600px) ──────────────────────── */
